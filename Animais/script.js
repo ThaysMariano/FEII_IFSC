@@ -168,7 +168,7 @@ class Capivara extends Animal{
 
 }
 
-
+//a quatidade conta isso
 let raposa = new Raposa('Sapeca');
 let guaxinim = new Guaxinim('Antunes');
 let capivara = new Capivara('Roberto');
