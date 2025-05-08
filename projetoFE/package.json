@@ -1,0 +1,19 @@
+{
+  "name": "projetofe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run tsc & npm run serve",
+    "tsc" : "tsc -w",
+    "serve" : "live-server ./dist --port=8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.2.2",
+    "typescript": "^5.8.3"
+  }
+}

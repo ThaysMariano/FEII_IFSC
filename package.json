@@ -9,5 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Repositório para aulas de Frontend II",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThaysMariano/FEII_IFSC.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ThaysMariano/FEII_IFSC/issues"
+  },
+  "homepage": "https://github.com/ThaysMariano/FEII_IFSC#readme"
 }
