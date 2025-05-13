@@ -6,7 +6,7 @@ const input = (texto:string, tipo="text")=>{
     const container = criarElemento('div');
 
     const input = criarElemento('input') as HTMLInputElement;
-    input.placeholder = "digite o nrm do seu cartao";
+    input.placeholder = "digite";
     input.type = tipo;
     input.id= Math.random().toString(36).substring(2, 15);
     const labelElemento = label(texto) as HTMLLabelElement;
