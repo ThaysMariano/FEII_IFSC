@@ -12,7 +12,6 @@ const Cabecalho = ({ texto }: CabecalhoProps) => {
     <header>
         <h1>{texto}</h1>
     </header>
-
     )
 
 

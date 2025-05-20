@@ -1,0 +1,7 @@
+.receita{
+    margin: 1em;
+    padding: 1em;
+    max-width: 40vw;
+    box-shadow: 2px 2px 4px #ccc;
+    border-radius: 10px;
+}
