@@ -5,3 +5,8 @@
     box-shadow: 2px 2px 4px #ccc;
     border-radius: 10px;
 }
+
+.receita-rodape{
+    display: flex;
+    justify-content: space-between;
+}
