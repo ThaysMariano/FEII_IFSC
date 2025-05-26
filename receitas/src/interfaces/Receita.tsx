@@ -1,4 +1,5 @@
 interface IReceita {
+    id: number,
     nome: string;
     ingredientes: {
         nome: string;

@@ -15,7 +15,7 @@ const Avaliacao = () => {
 
             {estrelas.map((_, i) => (
                 <Estrela key={i} selecionada={ avaliacao > i}
-                aoSelecionar={()=> avaliacao == i ? setAvaliacao(i+1) : setAvaliacao(i)}/>
+                aoSelecionar={()=> avaliacao == i ? setAvaliacao(i+1) : setAvaliacao(0)}/>
             ))}
 
         </div>

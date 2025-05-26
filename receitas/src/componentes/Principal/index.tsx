@@ -12,6 +12,7 @@ const Principal = () => {
 
     const receitas: IReceita[] = [
         {
+            id: 1,
             nome: "Salmão Assado",
             ingredientes: [
                 { nome: "Salmão", quantidade: 1, medida: "grande" },
@@ -31,6 +32,7 @@ const Principal = () => {
             ],
         },
         {
+            id: 2,
             nome: "Tacos de Peixe",
             ingredientes: [
                 { nome: "Peixe Branco", quantidade: 1, medida: "grande" },
@@ -45,14 +47,14 @@ const Principal = () => {
                 "Cubra com alface, tomates e queijo.",
             ],
         }
-    ]
+    ];
 
 
 
     //primeiro elemento apenas
     return (<main className="receitas">
         {receitas.map((receita, i) => (
-            <Receita key={i} nome={receita.nome} ingredientes={receita.ingredientes} instrucoes={receita.instrucoes} />
+            <Receita key={i} id={receita.id} nome={receita.nome} ingredientes={receita.ingredientes} instrucoes={receita.instrucoes} />
         ))}
     </main>)
 
