@@ -1,16 +1,18 @@
 
 //corpo da página
 
+import { useState } from "react"
 import type { IReceita } from "../../interfaces/Receita"
 import Receita from "../Receita"
 import "./style.css"
+import Formulario from "../Formulario"
 
 
 
 const Principal = () => {
 
-
-    const receitas: IReceita[] = [
+const [receitas, setReceitas]= useState(
+    [
         {
             id: 1,
             nome: "Salmão Assado",
@@ -47,15 +49,20 @@ const Principal = () => {
                 "Cubra com alface, tomates e queijo.",
             ],
         }
-    ];
+    ]);
+
+    const apagarReceita =(id: number)=>{
+       setReceitas(receitas.filter(receita => receita.id != id));
+    }
 
 
 
     //primeiro elemento apenas
     return (<main className="receitas">
-        {receitas.map((receita, i) => (
-            <Receita key={i} id={receita.id} nome={receita.nome} ingredientes={receita.ingredientes} instrucoes={receita.instrucoes} />
-        ))}
+        {receitas.map((receita) => (
+            <Receita key={receita.id} id={receita.id} nome={receita.nome} ingredientes={receita.ingredientes} instrucoes={receita.instrucoes} aoDeletar={apagarReceita} />
+           ))}
+             <Formulario receita={receitas[1]}/>      
     </main>)
 
 }

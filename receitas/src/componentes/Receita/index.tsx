@@ -2,14 +2,23 @@
 // receitas
 
 import type { IReceita } from "../../interfaces/Receita";
+import { FaEdit } from "react-icons/fa";
 import Avaliacao from "../avaliacao";
 import "./style.css"
 import { FaTrashCan } from "react-icons/fa6";
 
+interface ReceitaProps{
+    id: number,
+    nome: string,
+    ingredientes: {nome: string, quantidade: number, medida:string}[]
+    instrucoes: string[],
+    aoDeletar: (id:number)=>{};
+}
+
 
 
 //nomes das prop definidas pelo array de receitas em "principal"
-const Receita = ({ nome, ingredientes, instrucoes }: IReceita) => {
+const Receita = ({id, nome, ingredientes, instrucoes, aoDeletar }: ReceitaProps) => {
 
     return (
         <article className="receita">
@@ -30,8 +39,10 @@ const Receita = ({ nome, ingredientes, instrucoes }: IReceita) => {
 
             <div className="receita-rodape">
                   <Avaliacao/>
-                <FaTrashCan />
-              
+                  <div>
+                    <FaEdit />
+                    <FaTrashCan onClick={()=>aoDeletar(id)}/>
+                  </div>
             </div>
 
         </article>
