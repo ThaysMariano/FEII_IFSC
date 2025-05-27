@@ -12,13 +12,14 @@ interface ReceitaProps{
     nome: string,
     ingredientes: {nome: string, quantidade: number, medida:string}[]
     instrucoes: string[],
-    aoDeletar: (id:number)=>{};
+    aoDeletar: (id:number)=>void;
+    aoEditar: (id: number)=> void;
 }
 
 
 
 //nomes das prop definidas pelo array de receitas em "principal"
-const Receita = ({id, nome, ingredientes, instrucoes, aoDeletar }: ReceitaProps) => {
+const Receita = ({id, nome, ingredientes, instrucoes, aoDeletar, aoEditar }: ReceitaProps) => {
 
     return (
         <article className="receita">
@@ -40,7 +41,7 @@ const Receita = ({id, nome, ingredientes, instrucoes, aoDeletar }: ReceitaProps)
             <div className="receita-rodape">
                   <Avaliacao/>
                   <div>
-                    <FaEdit />
+                    <FaEdit onClick={() => aoEditar(id)}/>
                     <FaTrashCan onClick={()=>aoDeletar(id)}/>
                   </div>
             </div>

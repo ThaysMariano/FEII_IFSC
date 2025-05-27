@@ -51,19 +51,39 @@ const [receitas, setReceitas]= useState(
         }
     ]);
 
+    const [receitaSelecionada, setReceitaSelecionada] = useState<IReceita | undefined>()
+
     const apagarReceita =(id: number)=>{
        setReceitas(receitas.filter(receita => receita.id != id));
     }
 
+    const atualizarReceita = (receita : IReceita)=>{
+        setReceitas(receitas.map(r => (r.id === receita.id ? receita : r)))
+        setReceitaSelecionada(receita)
+    }
 
+    const aoEditar=(id: number)=>{
+        setReceitaSelecionada(receitas.find(receita => receita.id === id))
+    }
 
     //primeiro elemento apenas
-    return (<main className="receitas">
-        {receitas.map((receita) => (
-            <Receita key={receita.id} id={receita.id} nome={receita.nome} ingredientes={receita.ingredientes} instrucoes={receita.instrucoes} aoDeletar={apagarReceita} />
+    return (
+    <main className="receitas">
+        {receitas.map((receita) => 
+        (
+            <Receita key={receita.id} 
+            id={receita.id} 
+            nome={receita.nome} 
+            ingredientes={receita.ingredientes} 
+            instrucoes={receita.instrucoes} 
+            aoDeletar={apagarReceita} 
+            aoEditar={aoEditar}/>
+
            ))}
-             <Formulario receita={receitas[1]}/>      
+
+             <Formulario receita={receitaSelecionada} aoAtualizar={atualizarReceita}/>      
     </main>)
+
 
 }
 
