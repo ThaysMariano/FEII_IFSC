@@ -1,5 +1,3 @@
-import { AiOutlineAccountBook } from "react-icons/ai";
-import type { IReceita } from "../../interfaces/Receita";
 
 
 interface Ingrediente{
