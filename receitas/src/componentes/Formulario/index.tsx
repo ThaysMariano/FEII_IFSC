@@ -9,9 +9,6 @@ interface FormProp {
 
 const Formulario = ({ receita, aoAtualizar }: FormProp) => {
 
-// if(receita == undefined){
-//     return<p>indefinida</p>
-// }
 
         return (<>{ receita && <form>
             <h2>Editar Receita</h2>
@@ -25,12 +22,18 @@ const Formulario = ({ receita, aoAtualizar }: FormProp) => {
 
                     </li>)}
                 <h3>Modo de Preparo</h3>
-                {receita.instrucoes.map((instrucao, i) => (
-                    <li>
-                        <input type="text" name="instucao" value={instrucao} />
+                <ol>
+                    {receita.instrucoes.map((instrucao, i) => (
+                    <li key={i}>
+                        <input type="text" name="instrucao" value={instrucao} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            const instrucoes = receita.instrucoes.map((inst, j) => i===j ? e.target.value : inst); 
+                            aoAtualizar({...receita, instrucoes })                             //p cada elm se for msm indice pega o evento, se nao retorna o original
+                        }} />
                     </li>
 
                 ))}
+                </ol>
+                
         </form>}</>);
 }
 
