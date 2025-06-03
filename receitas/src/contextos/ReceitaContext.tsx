@@ -1,19 +1,18 @@
-import { Children, createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
+import type { IReceita } from "../interfaces/Receita";
 
-
-interface ReceitaProviderProps{
-
-
+interface ReceitaProviderProps {
+    children: React.ReactNode;
 }
 
-
 const ReceitaContext = createContext<unknown>({
-
+    receitas: [],
+    setReceitas: () => {},
+    receitaSelecionada: null,
+    setReceitaSelecionada: () => {}
 });
 
-
 const ReceitaProvider = ({ children }: ReceitaProviderProps) => {
-
     const [receitas, setReceitas] = useState(
         [
             {
@@ -51,17 +50,17 @@ const ReceitaProvider = ({ children }: ReceitaProviderProps) => {
                     "Coloque o peixe sobre as 3 tortilhas.",
                     "Cubra com alface, tomates e queijo.",
                 ],
-            }
-        ]
-    )
+            },
+        ]);
 
-     const [receitaSelecionada, setReceitaSelecionada] = useState<IReceita | undefined>(undefined);
+    const [receitaSelecionada, setReceitaSelecionada] = useState<IReceita | undefined>(undefined);
 
-        return (
-            //componentes em children possuem os estados
+    return (
         <ReceitaContext.Provider value={{ receitas, setReceitas, receitaSelecionada, setReceitaSelecionada }}>
             {children}
         </ReceitaContext.Provider>
-        )
+    )
 }
 
+
+export {ReceitaProvider, ReceitaContext}

@@ -2,6 +2,7 @@
 import { Fragment } from "react/jsx-runtime";
 import Cabecalho from "./componentes/Cabecalho";
 import Principal from "./componentes/Principal";
+import { ReceitaProvider } from "./contextos/ReceitaContext";
 
 const App = () => {
 
@@ -9,7 +10,10 @@ const App = () => {
     return (
         <>
             <Cabecalho texto="Comidinhas da Magali"></Cabecalho>
-            <Principal/>
+            <ReceitaProvider>
+                <Principal/>
+            </ReceitaProvider>
+            
         </>
     )
 }
