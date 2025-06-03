@@ -5,12 +5,11 @@ import InputIngrediente from "../inputIngrediente";
 import { ReceitaContext } from "../../contextos/ReceitaContext";
 
 interface FormProp {
-    receita: IReceita | undefined | null;
     aoAtualizar: (r: IReceita) => void
 }
 
 
-const Formulario = ({ receita, aoAtualizar }: FormProp) => {
+const Formulario = ({ aoAtualizar }: FormProp) => {
 
 
     const {receitaSelecionada} = useContext(ReceitaContext)

@@ -32,13 +32,11 @@ const Principal = () => {
     //primeiro elemento apenas
     return (
     <main className="receitas">
-        {receitas.map((receita) => 
+        {receitas.map((receita: IReceita) => 
         (
-            <Receita key={receita.id} 
-            id={receita.id} 
-            nome={receita.nome} 
-            ingredientes={receita.ingredientes} 
-            instrucoes={receita.instrucoes} 
+            <Receita 
+            key={receita.id} 
+            id = {receita.id}
             aoDeletar={apagarReceita} 
             aoEditar={aoEditar}/>
 
