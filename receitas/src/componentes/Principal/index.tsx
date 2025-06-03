@@ -7,28 +7,15 @@ import Receita from "../Receita"
 import "./style.css"
 import Formulario from "../Formulario"
 import { ReceitaContext } from "../../contextos/ReceitaContext"
+import useReceita from "../../hooks/useReceita"
 
 
 
 const Principal = () => {
 
-    const {  receitas, receitaSelecionada, setReceitas, setReceitaSelecionada  } = useContext(ReceitaContext)
+    const {  receitas,  apagarReceita, aoEditar, atualizarReceita} = useReceita(); 
 
-
-    const apagarReceita =(id: number)=>{
-       setReceitas(receitas.filter(receita => receita.id != id));
-    }
-
-    const atualizarReceita = (receita : IReceita)=>{
-        setReceitas(receitas.map(r => (r.id === receita.id ? receita : r)));
-        setReceitaSelecionada(receita);
-    }
-
-    const aoEditar=(id: number)=>{
-        const receita =receitas.find((receita: IReceita) => receita.id === id)
-        !receita ? setReceitaSelecionada(null) : setReceitaSelecionada(receita);
-    }
-
+    
     //primeiro elemento apenas
     return (
     <main className="receitas">
