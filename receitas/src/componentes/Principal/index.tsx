@@ -1,15 +1,18 @@
 
 //corpo da página
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import type { IReceita } from "../../interfaces/Receita"
 import Receita from "../Receita"
 import "./style.css"
 import Formulario from "../Formulario"
+import { ReceitaContext } from "../../contextos/ReceitaContext"
 
 
 
 const Principal = () => {
+
+    const {  receitas, receitaSelecionada, setReceitas, setReceitaSelecionada  } = useContext(ReceitaContext)
 
 
     const apagarReceita =(id: number)=>{
@@ -17,12 +20,13 @@ const Principal = () => {
     }
 
     const atualizarReceita = (receita : IReceita)=>{
-        setReceitas(receitas.map(r => (r.id === receita.id ? receita : r)))
-        setReceitaSelecionada(receita)
+        setReceitas(receitas.map(r => (r.id === receita.id ? receita : r)));
+        setReceitaSelecionada(receita);
     }
 
     const aoEditar=(id: number)=>{
-        setReceitaSelecionada(receitas.find(receita => receita.id === id))
+        const receita =receitas.find((receita: IReceita) => receita.id === id)
+        !receita ? setReceitaSelecionada(null) : setReceitaSelecionada(receita);
     }
 
     //primeiro elemento apenas
@@ -40,7 +44,7 @@ const Principal = () => {
 
            ))}
 
-             <Formulario receita={receitaSelecionada} aoAtualizar={atualizarReceita}/>      
+             <Formulario aoAtualizar={atualizarReceita}/>      
     </main>)
 
 
