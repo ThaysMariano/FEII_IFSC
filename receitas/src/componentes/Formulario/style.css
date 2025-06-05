@@ -1,0 +1,16 @@
+.titulo-form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon-fechar-form{
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.icon-fechar-form:hover{
+    background: linear-gradient(rgb(252, 127, 148), rgb(162, 137, 252));
+    padding: 2px;
+    border-radius: 50%;
+}

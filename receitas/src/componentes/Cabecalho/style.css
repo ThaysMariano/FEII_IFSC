@@ -1,0 +1,8 @@
+header{
+    background: linear-gradient(coral, rgb(236, 84, 110));
+    padding: 10px;
+}
+
+header h1{
+    margin: 0;
+}

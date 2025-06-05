@@ -1,10 +1,9 @@
 
-import { useContext } from "react";
 import type { IReceita } from "../../interfaces/Receita"
 import InputIngrediente from "../inputIngrediente";
-import { ReceitaContext } from "../../contextos/ReceitaContext";
 import { IoClose } from "react-icons/io5";
 import useReceita from "../../hooks/useReceita";
+import "./style.css"
 
 interface FormProp {
     aoAtualizar: (r: IReceita) => void
@@ -17,9 +16,9 @@ const Formulario = ({ aoAtualizar }: FormProp) => {
     const {receitaSelecionada, fecharForm} = useReceita()
 
     return (<>{receitaSelecionada && <form>
-        <div>
+        <div className="titulo-form">
             <h2>Editar Receita</h2>
-            <IoClose onClick={fecharForm} />
+            <IoClose onClick={fecharForm} className="icon-fechar-form" />
         </div>
         
         <input type="text" name="nome" value={receitaSelecionada.nome} onChange={(e: React.ChangeEvent<HTMLInputElement>) => aoAtualizar({ ...receitaSelecionada, nome: e.target.value })} />
