@@ -6,7 +6,7 @@ import { ReceitaProvider } from "./contextos/ReceitaContext";
 import { BrowserRouter, Route, Routes } from "react-router";
 import Formulario from "./componentes/Formulario";
 
-const App = () => {
+const AppRoutes = () => {
 
 
     return (
@@ -24,4 +24,4 @@ const App = () => {
     )
 }
 
-export default App;
+export default AppRoutes;
