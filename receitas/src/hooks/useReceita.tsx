@@ -23,9 +23,12 @@ const useReceita = () => {
         !receita ? setReceitaSelecionada(null) : setReceitaSelecionada(receita);
     }
 
+    const fecharForm = ()=>{
+        setReceitaSelecionada(null);
+    }
 
 
-    return {receitas, setReceitas, receitaSelecionada, setReceitaSelecionada, apagarReceita, atualizarReceita, aoEditar};
+    return {receitas, setReceitas, receitaSelecionada, setReceitaSelecionada, apagarReceita, atualizarReceita, aoEditar, fecharForm};
 
 
 }

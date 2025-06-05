@@ -3,6 +3,8 @@ import { useContext } from "react";
 import type { IReceita } from "../../interfaces/Receita"
 import InputIngrediente from "../inputIngrediente";
 import { ReceitaContext } from "../../contextos/ReceitaContext";
+import { IoClose } from "react-icons/io5";
+import useReceita from "../../hooks/useReceita";
 
 interface FormProp {
     aoAtualizar: (r: IReceita) => void
@@ -12,10 +14,14 @@ interface FormProp {
 const Formulario = ({ aoAtualizar }: FormProp) => {
 
 
-    const {receitaSelecionada} = useContext(ReceitaContext)
+    const {receitaSelecionada, fecharForm} = useReceita()
 
     return (<>{receitaSelecionada && <form>
-        <h2>Editar Receita</h2>
+        <div>
+            <h2>Editar Receita</h2>
+            <IoClose onClick={fecharForm} />
+        </div>
+        
         <input type="text" name="nome" value={receitaSelecionada.nome} onChange={(e: React.ChangeEvent<HTMLInputElement>) => aoAtualizar({ ...receitaSelecionada, nome: e.target.value })} />
         <h3>Ingredientes</h3>
         {receitaSelecionada.ingredientes.map((ingrediente, i) =>
