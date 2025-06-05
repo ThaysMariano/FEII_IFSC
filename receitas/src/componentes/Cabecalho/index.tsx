@@ -1,4 +1,5 @@
 
+import MenuNavegacao from "../MenuNavegacao";
 import "./style.css"
 
 //header
@@ -13,6 +14,7 @@ const Cabecalho = ({ texto }: CabecalhoProps) => {
     return (
     <header>
         <h1>{texto}</h1>
+        <MenuNavegacao/>
     </header>
     )
 

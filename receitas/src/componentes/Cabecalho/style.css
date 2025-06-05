@@ -1,8 +1,12 @@
+
+
+
 header{
-    background: linear-gradient(coral, rgb(236, 84, 110));
+    background: linear-gradient(rgb(255, 130, 151), rgb(252, 178, 151));
     padding: 10px;
 }
 
 header h1{
     margin: 0;
+
 }

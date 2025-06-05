@@ -5,15 +5,17 @@ import { IoClose } from "react-icons/io5";
 import useReceita from "../../hooks/useReceita";
 import "./style.css"
 
-interface FormProp {
-    aoAtualizar: (r: IReceita) => void
-}
 
 
-const Formulario = ({ aoAtualizar }: FormProp) => {
+
+const Formulario = () => {
 
 
-    const {receitaSelecionada, fecharForm} = useReceita()
+    const {receitaSelecionada, fecharForm, atualizarReceita} = useReceita()
+
+    if(!receitaSelecionada) return <h2>Não há receita selecionada :p</h2>
+
+
 
     return (<>{receitaSelecionada && <form>
         <div className="titulo-form">
@@ -21,14 +23,14 @@ const Formulario = ({ aoAtualizar }: FormProp) => {
             <IoClose onClick={fecharForm} className="icon-fechar-form" />
         </div>
         
-        <input type="text" name="nome" value={receitaSelecionada.nome} onChange={(e: React.ChangeEvent<HTMLInputElement>) => aoAtualizar({ ...receitaSelecionada, nome: e.target.value })} />
+        <input type="text" name="nome" value={receitaSelecionada.nome} onChange={(e: React.ChangeEvent<HTMLInputElement>) => atualizarReceita({ ...receitaSelecionada, nome: e.target.value })} />
         <h3>Ingredientes</h3>
         {receitaSelecionada.ingredientes.map((ingrediente, i) =>
             <li key={i}>
                 <InputIngrediente nome={ingrediente.nome} quantidade={ingrediente.quantidade} medida={ingrediente.medida} aoAtualizar={
                     (ingredienteAtualizado) => {
                         const ingredientes = receitaSelecionada.ingredientes.map((ing, j) => i === j ? ingredienteAtualizado : ing);
-                        aoAtualizar({ ...receitaSelecionada, ingredientes })
+                        atualizarReceita({ ...receitaSelecionada, ingredientes })
                     }}/>
             </li>)}
         <h3>Modo de Preparo</h3>
@@ -37,7 +39,7 @@ const Formulario = ({ aoAtualizar }: FormProp) => {
                 <li key={i}>
                     <input type="text" name="instrucao" value={instrucao} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         const instrucoes = receitaSelecionada.instrucoes.map((inst, j) => i === j ? e.target.value : inst);
-                        aoAtualizar({ ...receitaSelecionada, instrucoes })                                                        //p cada elm se for msm indice pega o evento, se nao retorna o original
+                        atualizarReceita({ ...receitaSelecionada, instrucoes })                                                        //p cada elm se for msm indice pega o evento, se nao retorna o original
                     }} />
                 </li>
 
