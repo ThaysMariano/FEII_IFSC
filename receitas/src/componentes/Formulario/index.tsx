@@ -4,25 +4,46 @@ import InputIngrediente from "../inputIngrediente";
 import { IoClose } from "react-icons/io5";
 import useReceita from "../../hooks/useReceita";
 import "./style.css"
+import { useLocation } from "react-router";
+import { useContext } from "react";
+
+interface FormProp{
+    id?: number;
+}
 
 
+const Formulario = ({ id }: FormProp) => {
 
+    const localizacao = useLocation();
 
-const Formulario = () => {
+    console.log(localizacao);
 
+    const { receitaSelecionada, fecharForm, setReceitaSelecionada } = useReceita()
 
-    const {receitaSelecionada, fecharForm, atualizarReceita} = useReceita()
+    const { atualizarReceita } = useReceita();
 
-    if(!receitaSelecionada) return <h2>Não há receita selecionada :p</h2>
+    if (localizacao.pathname === "/adicionar") {
+        const receitaVazia: IReceita ={
+            id: 0,
+            nome: "",
+            ingredientes: [{
+                    nome: "",
+                    quantidade: 0,
+                    medida: "",
+                }],
+            instrucoes: [" "]
+            }
+            setReceitaSelecionada(receitaVazia)
+    }
 
-
+    // if(!receitaSelecionada) return <h2>Não há receita selecionada :p</h2>
 
     return (<>{receitaSelecionada && <form>
         <div className="titulo-form">
             <h2>Editar Receita</h2>
             <IoClose onClick={fecharForm} className="icon-fechar-form" />
         </div>
-        
+
         <input type="text" name="nome" value={receitaSelecionada.nome} onChange={(e: React.ChangeEvent<HTMLInputElement>) => atualizarReceita({ ...receitaSelecionada, nome: e.target.value })} />
         <h3>Ingredientes</h3>
         {receitaSelecionada.ingredientes.map((ingrediente, i) =>
@@ -31,7 +52,7 @@ const Formulario = () => {
                     (ingredienteAtualizado) => {
                         const ingredientes = receitaSelecionada.ingredientes.map((ing, j) => i === j ? ingredienteAtualizado : ing);
                         atualizarReceita({ ...receitaSelecionada, ingredientes })
-                    }}/>
+                    }} />
             </li>)}
         <h3>Modo de Preparo</h3>
         <ol>

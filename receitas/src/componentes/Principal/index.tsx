@@ -29,7 +29,7 @@ const Principal = () => {
 
            ))}
 
-             <Formulario aoAtualizar={atualizarReceita}/>      
+             <Formulario />      
     </main>)
 
 
