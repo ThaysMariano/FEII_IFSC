@@ -17,3 +17,20 @@ test("Deve renderizar com a cor lightgray quando não selecianada", ()=>{
     //verificacao com o que se espera
     expect(estrela).toHaveAttribute("color", "lightgray");
 })
+
+
+test("Deve renderizar com a cor coral quando selecianada", ()=>{
+
+    //arrange
+    //renderiza a estrela
+    render(<Estrela selecionada={true}></Estrela>);
+
+    //act
+    //pega o elemento da tela para analise
+    const estrela = screen.getByTestId("estrela");    
+
+    //assert
+    //verificacao com o que se espera
+    expect(estrela).toHaveAttribute("color", "coral");
+})
+
