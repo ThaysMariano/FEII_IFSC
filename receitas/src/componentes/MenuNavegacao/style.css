@@ -1,4 +1,4 @@
-.menu-navegacao{
+.menu-navegacao {
     display: flex;
     justify-content: end;
     align-items: center;
@@ -6,13 +6,12 @@
     margin-right: 20px;
 }
 
-.link{
+.link {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2em;
-    
 }
 
-.link:active{
-    color: navy ;
+.link:active {
+    color: navy;
 }

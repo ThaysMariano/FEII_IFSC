@@ -1,12 +1,8 @@
-
-
-
-header{
+header {
     background: linear-gradient(rgb(255, 130, 151), rgb(252, 178, 151));
     padding: 10px;
 }
 
-header h1{
+header h1 {
     margin: 0;
-
 }

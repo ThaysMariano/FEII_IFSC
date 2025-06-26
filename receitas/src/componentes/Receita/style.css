@@ -1,4 +1,4 @@
-.receita{
+.receita {
     margin: 1em;
     padding: 1em;
     max-width: 40vw;
@@ -6,7 +6,7 @@
     border-radius: 10px;
 }
 
-.receita-rodape{
+.receita-rodape {
     display: flex;
     justify-content: space-between;
 }
